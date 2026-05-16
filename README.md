@@ -19,13 +19,13 @@ It handles single files and folders, keeps nested folder structure intact, and s
 
 You need Python 3.9 or newer.
 
-Install the package from PyPI:
+Install:
 
 ```bash
-python3 -m pip install --user mfget
+pip install mfget
 ```
 
-Then run the command:
+Run:
 
 ```bash
 mediafire-dl
@@ -33,82 +33,96 @@ mediafire-dl
 
 ### macOS
 
-Install:
+If Python is not installed:
 
 ```bash
-python3 -m pip install --user mfget
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install python
 ```
 
-Run:
+Then install and run:
 
 ```bash
+pip install mfget
 mediafire-dl
 ```
 
-If your shell says `mediafire-dl` was not found, use:
+If `pip` is not found:
+
+```bash
+python3 -m pip install mfget
+```
+
+If `mediafire-dl` is not found:
 
 ```bash
 python3 -m mediafire_dl
 ```
 
-If the command is installed but your shell cannot find it, add Python's user script folder to your PATH. Adjust the Python version if needed:
-
-```bash
-echo 'export PATH="$HOME/Library/Python/3.12/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
 ### Windows
 
-Install:
+If Python is not installed:
 
 ```powershell
-py -m pip install --user mfget
+winget install Python.Python.3.12
 ```
 
-Run:
+Then install and run:
 
 ```powershell
+pip install mfget
 mediafire-dl
 ```
 
-If PowerShell says `mediafire-dl` was not found, use:
+If `pip` is not found:
+
+```powershell
+py -m pip install mfget
+```
+
+If `mediafire-dl` is not found:
 
 ```powershell
 py -m mediafire_dl
 ```
 
-If you want the `mediafire-dl` command to work directly, add Python's user Scripts folder to PATH. It usually looks like this, with the Python version adjusted for your install:
-
-```text
-%APPDATA%\Python\Python312\Scripts
-```
-
 ### Linux
 
-Install:
+If Python or pip is not installed:
 
 ```bash
-python3 -m pip install --user mfget
+sudo apt install python3 python3-pip
 ```
 
-Run:
+On Fedora:
 
 ```bash
+sudo dnf install python3 python3-pip
+```
+
+On Arch:
+
+```bash
+sudo pacman -S python python-pip
+```
+
+Then install and run:
+
+```bash
+pip install mfget
 mediafire-dl
 ```
 
-If your shell says `mediafire-dl` was not found, use:
+If `pip` is not found:
+
+```bash
+python3 -m pip install mfget
+```
+
+If `mediafire-dl` is not found:
 
 ```bash
 python3 -m mediafire_dl
-```
-
-Or add Python's user script folder to your PATH:
-
-```bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ### From GitHub
@@ -116,13 +130,13 @@ source ~/.bashrc
 Install the latest code from GitHub:
 
 ```bash
-python3 -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
+pip install git+https://github.com/worstgirlinamerica/mediafire-dl.git
 ```
 
 On Windows:
 
 ```powershell
-py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
+pip install git+https://github.com/worstgirlinamerica/mediafire-dl.git
 ```
 
 ### Local Project
@@ -130,7 +144,7 @@ py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.
 Install from a cloned project folder:
 
 ```bash
-python3 -m pip install --user .
+pip install .
 ```
 
 ## Usage

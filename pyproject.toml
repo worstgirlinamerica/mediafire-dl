@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mfget"
-version = "0.1.2"
+version = "0.1.3"
 description = "A clean MediaFire file and folder downloader with a Rich-powered CLI."
 readme = "README.md"
 requires-python = ">=3.9"
