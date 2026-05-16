@@ -12,3 +12,7 @@ class MediafireAPIError(MediafireDLError):
 
 class DownloadLinkError(MediafireDLError):
     """Raised when a public download URL cannot be extracted."""
+
+
+class CookieFileError(MediafireDLError):
+    """Raised when a user-provided cookie file cannot be loaded."""

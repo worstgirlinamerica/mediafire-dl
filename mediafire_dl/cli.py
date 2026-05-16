@@ -25,11 +25,12 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     destination = Path(args.output or ui.ask_save_dir(str(default_downloads_dir()))).expanduser()
 
-    http = HttpClient()
-    client = MediafireClient(http)
-    downloader = Downloader(http)
-
     try:
+        cookie_file = Path(args.cookies).expanduser() if args.cookies else None
+        http = HttpClient(cookie_file=cookie_file)
+        client = MediafireClient(http)
+        downloader = Downloader(http)
+
         ui.status("Finding files...")
         plan = client.build_plan(link)
         if not plan.files:
@@ -67,7 +68,7 @@ def main(argv: list[str] | None = None) -> int:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="mediafire-dl",
-        description="Download public MediaFire files and folders with a clean progress UI.",
+        description="Download MediaFire files and folders with a clean progress UI.",
     )
     parser.add_argument("link", nargs="?", help="MediaFire file or folder link")
     parser.add_argument(
@@ -79,6 +80,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--dry-run",
         action="store_true",
         help="List files without downloading them.",
+    )
+    parser.add_argument(
+        "--cookies",
+        help=(
+            "Path to a Netscape/Mozilla cookies.txt file to use for links your browser can access. "
+            "Cookies are read locally and are not saved by Mediafire-DL."
+        ),
     )
     parser.add_argument(
         "--verbose",

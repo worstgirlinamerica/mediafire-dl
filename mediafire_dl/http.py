@@ -2,14 +2,16 @@ from __future__ import annotations
 
 import json
 import logging
+from http.cookiejar import LoadError, MozillaCookieJar
 from html import unescape
 from html.parser import HTMLParser
+from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
-from urllib.request import Request, urlopen
+from urllib.request import HTTPCookieProcessor, Request, build_opener
 
-from .errors import DownloadLinkError, MediafireAPIError
+from .errors import CookieFileError, DownloadLinkError, MediafireAPIError
 
 LOGGER = logging.getLogger(__name__)
 
@@ -43,8 +45,28 @@ class DownloadButtonParser(HTMLParser):
 
 
 class HttpClient:
-    def __init__(self, timeout: int = 30) -> None:
+    def __init__(self, timeout: int = 30, cookie_file: Path | None = None) -> None:
         self.timeout = timeout
+        self.opener = build_opener()
+        if cookie_file:
+            self._load_cookies(cookie_file)
+
+    def _load_cookies(self, cookie_file: Path) -> None:
+        path = cookie_file.expanduser()
+        if not path.exists():
+            raise CookieFileError(f"Cookie file was not found: {path}")
+        if not path.is_file():
+            raise CookieFileError(f"Cookie path is not a file: {path}")
+
+        jar = MozillaCookieJar(str(path))
+        try:
+            jar.load(ignore_discard=True, ignore_expires=True)
+        except (LoadError, OSError) as exc:
+            LOGGER.debug("Could not load cookie file %s", path, exc_info=exc)
+            raise CookieFileError(
+                "Could not read the cookie file. Use a Netscape/Mozilla cookies.txt export."
+            ) from exc
+        self.opener = build_opener(HTTPCookieProcessor(jar))
 
     def api_get(self, endpoint: str, params: dict[str, str]) -> dict[str, Any]:
         params = {**params, "response_format": "json"}
@@ -69,7 +91,7 @@ class HttpClient:
     def fetch_bytes(self, url: str) -> bytes:
         request = Request(url, headers={"User-Agent": USER_AGENT})
         try:
-            with urlopen(request, timeout=self.timeout) as response:
+            with self.opener.open(request, timeout=self.timeout) as response:
                 return response.read()
         except HTTPError as exc:
             LOGGER.debug("HTTP error while fetching %s", url, exc_info=exc)
@@ -80,7 +102,7 @@ class HttpClient:
 
     def open_download(self, url: str):
         request = Request(url, headers={"User-Agent": USER_AGENT})
-        return urlopen(request, timeout=self.timeout)
+        return self.opener.open(request, timeout=self.timeout)
 
     def find_public_download_url(self, page_url: str) -> str:
         html = self.fetch_text(page_url)
