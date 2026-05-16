@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Local config and secrets
+.env
+.env.*
+*.env
+cookies.txt
+*.cookies
+*.cookie
+*.netrc
+
+# Logs and caches
+*.log
+logs/
+cache/
+.cache/
+
+# Downloaded media/output
+downloads/
+media/
+*.part
+*.tmp
+*.download
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
