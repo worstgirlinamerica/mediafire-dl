@@ -27,6 +27,11 @@ classifiers = [
   "Topic :: Utilities",
 ]
 
+[project.urls]
+Homepage = "https://github.com/worstgirlinamerica/mediafire-dl"
+Repository = "https://github.com/worstgirlinamerica/mediafire-dl"
+Issues = "https://github.com/worstgirlinamerica/mediafire-dl/issues"
+
 [project.scripts]
 mediafire-dl = "mediafire_dl.cli:main"
 

@@ -19,12 +19,12 @@ It handles single files and folders, keeps nested folder structure intact, and s
 
 You need Python 3.9 or newer.
 
-### macOS
+### From GitHub
 
-From this project folder:
+This works without cloning the repo first:
 
 ```bash
-python3 -m pip install --user .
+python3 -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
 ```
 
 Then run:
@@ -33,7 +33,35 @@ Then run:
 mediafire-dl
 ```
 
-If your terminal says `mediafire-dl` was not found, use the module form instead:
+On Windows, use `py` instead of `python3`:
+
+```powershell
+py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
+```
+
+### From PyPI
+
+Once Mediafire-DL is published to PyPI, it can be installed like this:
+
+```bash
+python3 -m pip install --user mediafire-dl
+```
+
+On Windows:
+
+```powershell
+py -m pip install --user mediafire-dl
+```
+
+### macOS
+
+If you installed with Python 3:
+
+```bash
+mediafire-dl
+```
+
+If your terminal says `mediafire-dl` was not found, use the module form:
 
 ```bash
 python3 -m mediafire_dl
@@ -48,13 +76,7 @@ source ~/.zshrc
 
 ### Windows
 
-From this project folder in PowerShell:
-
-```powershell
-py -m pip install --user .
-```
-
-Then run:
+Run:
 
 ```powershell
 mediafire-dl
@@ -74,13 +96,7 @@ If you want the `mediafire-dl` command to work directly, add Python's user Scrip
 
 ### Linux
 
-From this project folder:
-
-```bash
-python3 -m pip install --user .
-```
-
-Then run:
+Run:
 
 ```bash
 mediafire-dl
@@ -97,6 +113,14 @@ Or add Python's user script folder to your PATH:
 ```bash
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
+```
+
+### Local Development
+
+If you cloned the repo and want to install from the project folder:
+
+```bash
+python3 -m pip install --user .
 ```
 
 ## Usage
