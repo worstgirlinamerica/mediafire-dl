@@ -75,18 +75,6 @@ Show more technical error details:
 mediafire-dl --verbose "https://www.mediafire.com/file/example/file.zip/file"
 ```
 
-## Screenshots
-
-Screenshots can go here once the CLI output is captured.
-
-GitHub shows images in a README like this:
-
-```md
-![Mediafire-DL downloading a folder](docs/screenshot.png)
-```
-
-Put the image at `docs/screenshot.png`, commit it, and GitHub will display it on the repo page.
-
 ## Supported Links
 
 Supported:
@@ -106,13 +94,6 @@ Not supported:
 ## Privacy And Safety
 
 Mediafire-DL does not ask for MediaFire login details and does not read browser cookies.
-
-Before publishing this repo, keep these rules:
-
-- Do not commit downloaded files.
-- Do not commit `.env` files, cookies, logs, or private notes.
-- Do not run `git init` from the parent `Mediafire` folder because that folder contains files outside this project.
-- Run Git commands from the `Mediafire-DL` folder only.
 
 This repo already ignores common private and generated files in `.gitignore`, including `.env`, cookies, logs, caches, virtual environments, `.DS_Store`, partial downloads, and local media/download folders.
 
@@ -135,56 +116,6 @@ The package entry point is:
 ```bash
 mediafire-dl
 ```
-
-## Publish To GitHub
-
-You said the GitHub repo already exists as `mediafire-dl`. From this machine, the important part is to run the commands inside the project folder:
-
-```bash
-cd /Users/trevorweston/Mediafire/Mediafire-DL
-```
-
-Check what Git will see:
-
-```bash
-git status
-```
-
-If Git says this is not a repository yet, initialize it:
-
-```bash
-git init
-git branch -M main
-```
-
-Add the project files:
-
-```bash
-git add README.md LICENSE pyproject.toml .gitignore mediafire_dl
-git status
-```
-
-If the file list looks right, commit it:
-
-```bash
-git commit -m "Initial Mediafire-DL release"
-```
-
-Connect it to your GitHub repo:
-
-```bash
-git remote add origin https://github.com/YOUR-GITHUB-USERNAME/mediafire-dl.git
-```
-
-Replace `YOUR-GITHUB-USERNAME` with your real GitHub username.
-
-Push it:
-
-```bash
-git push -u origin main
-```
-
-After that, GitHub will automatically use this `README.md` as the main page for the repo.
 
 ## License
 
