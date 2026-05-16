@@ -41,16 +41,16 @@ py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.
 
 ### From PyPI
 
-Once Mediafire-DL is published to PyPI, it can be installed like this:
+Once Mediafire-DL is published to PyPI as `mfget`, it can be installed like this:
 
 ```bash
-python3 -m pip install --user mediafire-dl
+python3 -m pip install --user mfget
 ```
 
 On Windows:
 
 ```powershell
-py -m pip install --user mediafire-dl
+py -m pip install --user mfget
 ```
 
 ### macOS

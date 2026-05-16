@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mediafire-dl"
+name = "mfget"
 version = "0.1.0"
 description = "A clean MediaFire file and folder downloader with a Rich-powered CLI."
 readme = "README.md"
