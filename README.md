@@ -19,55 +19,39 @@ It handles single files and folders, keeps nested folder structure intact, and s
 
 You need Python 3.9 or newer.
 
-### From GitHub
-
-This works without cloning the repo first:
-
-```bash
-python3 -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
-```
-
-Then run:
-
-```bash
-mediafire-dl
-```
-
-On Windows, use `py` instead of `python3`:
-
-```powershell
-py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
-```
-
-### From PyPI
-
-Once Mediafire-DL is published to PyPI as `mfget`, it can be installed like this:
+Install the package from PyPI:
 
 ```bash
 python3 -m pip install --user mfget
 ```
 
-On Windows:
-
-```powershell
-py -m pip install --user mfget
-```
-
-### macOS
-
-If you installed with Python 3:
+Then run the command:
 
 ```bash
 mediafire-dl
 ```
 
-If your terminal says `mediafire-dl` was not found, use the module form:
+### macOS
+
+Install:
+
+```bash
+python3 -m pip install --user mfget
+```
+
+Run:
+
+```bash
+mediafire-dl
+```
+
+If your shell says `mediafire-dl` was not found, use:
 
 ```bash
 python3 -m mediafire_dl
 ```
 
-If the command is installed but your shell cannot find it, add Python's user script folder to your PATH. The version number may be different on your machine:
+If the command is installed but your shell cannot find it, add Python's user script folder to your PATH. Adjust the Python version if needed:
 
 ```bash
 echo 'export PATH="$HOME/Library/Python/3.12/bin:$PATH"' >> ~/.zshrc
@@ -75,6 +59,12 @@ source ~/.zshrc
 ```
 
 ### Windows
+
+Install:
+
+```powershell
+py -m pip install --user mfget
+```
 
 Run:
 
@@ -96,6 +86,12 @@ If you want the `mediafire-dl` command to work directly, add Python's user Scrip
 
 ### Linux
 
+Install:
+
+```bash
+python3 -m pip install --user mfget
+```
+
 Run:
 
 ```bash
@@ -115,9 +111,23 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### Local Development
+### From GitHub
 
-If you cloned the repo and want to install from the project folder:
+Install the latest code from GitHub:
+
+```bash
+python3 -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
+```
+
+On Windows:
+
+```powershell
+py -m pip install --user git+https://github.com/worstgirlinamerica/mediafire-dl.git
+```
+
+### Local Project
+
+Install from a cloned project folder:
 
 ```bash
 python3 -m pip install --user .
@@ -182,28 +192,6 @@ Not supported:
 ## Privacy And Safety
 
 Mediafire-DL does not ask for MediaFire login details and does not read browser cookies automatically. If you use `--cookies`, the cookie file stays on your machine and is only read by the current command.
-
-This repo already ignores common private and generated files in `.gitignore`, including `.env`, cookies, logs, caches, virtual environments, `.DS_Store`, partial downloads, and local media/download folders.
-
-## Development
-
-For an editable install while working on the code:
-
-```bash
-python3 -m pip install --user -e .
-```
-
-Run the CLI from source:
-
-```bash
-python3 -m mediafire_dl
-```
-
-The package entry point is:
-
-```bash
-mediafire-dl
-```
 
 ## License
 
